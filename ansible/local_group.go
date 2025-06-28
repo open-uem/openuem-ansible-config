@@ -2,8 +2,12 @@ package ansible
 
 import "errors"
 
-func AddLocalGroup(name string, gid int, system bool) (*AnsiblePlaybook, error) {
+func AddLocalGroup(playbookName string, name string, gid int, system bool) (*AnsiblePlaybook, error) {
 	playbook := AnsiblePlaybook{}
+	if playbookName == "" {
+		return nil, errors.New("playbook name cannot be empty")
+	}
+	playbook.Name = playbookName
 
 	group := AnsibleBuiltinGroup{}
 
@@ -22,8 +26,12 @@ func AddLocalGroup(name string, gid int, system bool) (*AnsiblePlaybook, error) 
 	return &playbook, nil
 }
 
-func RemoveLocalGroup(name string, force bool) (*AnsiblePlaybook, error) {
+func RemoveLocalGroup(playbookName string, name string, force bool) (*AnsiblePlaybook, error) {
 	playbook := AnsiblePlaybook{}
+	if playbookName == "" {
+		return nil, errors.New("playbook name cannot be empty")
+	}
+	playbook.Name = playbookName
 
 	group := AnsibleBuiltinGroup{}
 
