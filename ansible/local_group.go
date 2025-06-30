@@ -2,47 +2,47 @@ package ansible
 
 import "errors"
 
-func AddLocalGroup(playbookName string, name string, gid int, system bool) (*AnsiblePlaybook, error) {
-	playbook := AnsiblePlaybook{}
-	if playbookName == "" {
-		return nil, errors.New("playbook name cannot be empty")
-	}
-	playbook.Name = playbookName
-
+func AddLocalGroup(taskName string, name string, gid int, system bool) (*AnsibleBuiltinGroup, error) {
 	group := AnsibleBuiltinGroup{}
+	if taskName == "" {
+		return nil, errors.New("task name cannot be empty")
+	}
+	group.TaskName = taskName
 
 	if name == "" {
 		return nil, errors.New("group name cannot be empty")
 	}
-	group.Name = name
-	if gid > 0 {
-		group.GID = gid
+
+	group.Parameters = AnsibleBuiltinGroupParameters{
+		Name: name,
 	}
-	group.System = system
-	group.State = Present
 
-	playbook.Tasks = append(playbook.Tasks, group)
+	if gid > 0 {
+		group.Parameters.GID = gid
+	}
+	group.Parameters.System = system
+	group.Parameters.State = Present
 
-	return &playbook, nil
+	return &group, nil
 }
 
-func RemoveLocalGroup(playbookName string, name string, force bool) (*AnsiblePlaybook, error) {
-	playbook := AnsiblePlaybook{}
-	if playbookName == "" {
-		return nil, errors.New("playbook name cannot be empty")
-	}
-	playbook.Name = playbookName
-
+func RemoveLocalGroup(taskName string, name string, force bool) (*AnsibleBuiltinGroup, error) {
 	group := AnsibleBuiltinGroup{}
+	if taskName == "" {
+		return nil, errors.New("task name cannot be empty")
+	}
+	group.TaskName = taskName
 
 	if name == "" {
 		return nil, errors.New("group name cannot be empty")
 	}
-	group.Name = name
-	group.Force = force
-	group.State = Absent
 
-	playbook.Tasks = append(playbook.Tasks, group)
+	group.Parameters = AnsibleBuiltinGroupParameters{
+		Name: name,
+	}
 
-	return &playbook, nil
+	group.Parameters.Force = force
+	group.Parameters.State = Absent
+
+	return &group, nil
 }

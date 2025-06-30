@@ -13,6 +13,11 @@ type AnsiblePlaybook struct {
 }
 
 type AnsibleBuiltinGroup struct {
+	TaskName   string                        `yaml:"name"`
+	Parameters AnsibleBuiltinGroupParameters `yaml:"ansible.builtin.group"`
+}
+
+type AnsibleBuiltinGroupParameters struct {
 	Name   string `yaml:"name"`
 	GID    int    `yaml:"gid,omitempty"`
 	System bool   `yaml:"system,omitempty"`
