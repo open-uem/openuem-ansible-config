@@ -5,6 +5,10 @@ const (
 	Present = "present"
 )
 
+type AnsiblePlaybooks struct {
+	Plabooks []AnsiblePlaybook
+}
+
 type AnsiblePlaybook struct {
 	Name       string `yaml:"name"`
 	Hosts      string `yaml:"hosts"`
