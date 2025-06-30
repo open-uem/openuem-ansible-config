@@ -6,7 +6,7 @@ const (
 )
 
 type AnsiblePlaybooks struct {
-	Plabooks []AnsiblePlaybook
+	Playbooks []AnsiblePlaybook
 }
 
 type AnsiblePlaybook struct {
