@@ -22,5 +22,5 @@ type AnsibleBuiltinGroupParameters struct {
 	GID    int    `yaml:"gid,omitempty"`
 	System bool   `yaml:"system,omitempty"`
 	Force  bool   `yaml:"force,omitempty"`
-	State  string `yaml:"force,omitempty"`
+	State  string `yaml:"state,omitempty"`
 }
