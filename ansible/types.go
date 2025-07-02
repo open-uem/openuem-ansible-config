@@ -58,7 +58,7 @@ type AnsibleBuiltinUserParameters struct {
 	Skeleton                     string  `yaml:"skeleton,omitempty"`
 	SSHKeyBits                   int     `yaml:"ssh_key_bits,omitempty"`
 	SSHKeyComment                string  `yaml:"ssh_key_comment,omitempty"`
-	SSHKeyFile                   string  `yaml:"ssh_key_bits,omitempty"`
+	SSHKeyFile                   string  `yaml:"ssh_key_file,omitempty"`
 	SSHKeyPassphrase             string  `yaml:"ssh_key_passphrase,omitempty"`
 	SSHKeyType                   string  `yaml:"ssh_key_type,omitempty"`
 	State                        string  `yaml:"state,omitempty"`
