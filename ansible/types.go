@@ -28,3 +28,44 @@ type AnsibleBuiltinGroupParameters struct {
 	Force  bool   `yaml:"force,omitempty"`
 	State  string `yaml:"state,omitempty"`
 }
+
+type AnsibleBuiltinUser struct {
+	TaskName   string                       `yaml:"name"`
+	Parameters AnsibleBuiltinUserParameters `yaml:"ansible.builtin.user"`
+}
+
+type AnsibleBuiltinUserParameters struct {
+	Name                         string  `yaml:"name"`
+	Append                       bool    `yaml:"append,omitempty"`
+	Comment                      string  `yaml:"comment,omitempty"`
+	CreateHome                   string  `yaml:"create_home,omitempty"`
+	Expires                      float64 `yaml:"expires,omitempty"`
+	Force                        bool    `yaml:"force,omitempty"`
+	GenerateSSHKey               bool    `yaml:"generate_ssh_key,omitempty"`
+	Group                        string  `yaml:"group,omitempty"`
+	Groups                       string  `yaml:"groups,omitempty"`
+	Hidden                       bool    `yaml:"hidden,omitempty"`
+	Home                         string  `yaml:"home,omitempty"`
+	NonUnique                    bool    `yaml:"non_unique,omitempty"`
+	Password                     string  `yaml:"password,omitempty"`
+	PasswordExpireAccountDisable int     `yaml:"password_expire_account_disable,omitempty"`
+	PasswordExpireMax            int     `yaml:"password_expire_max,omitempty"`
+	PasswordExpireMin            int     `yaml:"password_expire_min,omitempty"`
+	PasswordExpireWarn           int     `yaml:"password_expire_warn,omitempty"`
+	PasswordLock                 bool    `yaml:"password_lock,omitempty"`
+	SeUser                       string  `yaml:"seuser,omitempty"`
+	Shell                        string  `yaml:"shell,omitempty"`
+	Skeleton                     string  `yaml:"skeleton,omitempty"`
+	SSHKeyBits                   int     `yaml:"ssh_key_bits,omitempty"`
+	SSHKeyComment                string  `yaml:"ssh_key_comment,omitempty"`
+	SSHKeyFile                   string  `yaml:"ssh_key_bits,omitempty"`
+	SSHKeyPassphrase             string  `yaml:"ssh_key_passphrase,omitempty"`
+	SSHKeyType                   string  `yaml:"ssh_key_type,omitempty"`
+	State                        string  `yaml:"state,omitempty"`
+	System                       bool    `yaml:"system,omitempty"`
+	UID                          int     `yaml:"uid,omitempty"`
+	UIDMax                       int     `yaml:"uid_max,omitempty"`
+	UIDMin                       int     `yaml:"uid_min,omitempty"`
+	Umask                        string  `yaml:"umask,omitempty"`
+	UpdatePassword               string  `yaml:"update_password,omitempty"`
+}
