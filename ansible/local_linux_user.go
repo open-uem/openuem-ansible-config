@@ -3,7 +3,6 @@ package ansible
 import (
 	"errors"
 	"fmt"
-	"strconv"
 )
 
 func AddLinuxLocalUser(taskName string,
@@ -29,7 +28,7 @@ func AddLinuxLocalUser(taskName string,
 	user.Parameters = AnsibleBuiltinUserParameters{
 		Name:           name,
 		Comment:        comment,
-		CreateHome:     strconv.FormatBool(create_home),
+		CreateHome:     create_home,
 		Append:         append,
 		System:         system,
 		Force:          force,
@@ -54,7 +53,7 @@ func AddLinuxLocalUser(taskName string,
 	}
 
 	if password != "" {
-		user.Parameters.Password = fmt.Sprintf("{{ '%s' | password_hash('sha512') }}", password)
+		user.Parameters.Password = fmt.Sprintf(`{{ %s | password_hash("sha512") }}`, password)
 	}
 
 	if password_expire_account_disable >= 0 {

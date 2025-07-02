@@ -38,7 +38,7 @@ type AnsibleBuiltinUserParameters struct {
 	Name                         string  `yaml:"name"`
 	Append                       bool    `yaml:"append,omitempty"`
 	Comment                      string  `yaml:"comment,omitempty"`
-	CreateHome                   string  `yaml:"create_home,omitempty"`
+	CreateHome                   bool    `yaml:"create_home,omitempty"`
 	Expires                      float64 `yaml:"expires,omitempty"`
 	Force                        bool    `yaml:"force,omitempty"`
 	GenerateSSHKey               bool    `yaml:"generate_ssh_key,omitempty"`
