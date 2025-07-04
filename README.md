@@ -1,4 +1,4 @@
-# Winget Configuration File Generator
+# Ansible Configuration File Generator
 
 This repository contains a library that can help to create Ansible playbooks
 
