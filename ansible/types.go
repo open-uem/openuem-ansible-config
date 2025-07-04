@@ -52,7 +52,7 @@ type AnsibleBuiltinUserParameters struct {
 	PasswordExpireMax            int     `yaml:"password_expire_max,omitempty"`
 	PasswordExpireMin            int     `yaml:"password_expire_min,omitempty"`
 	PasswordExpireWarn           int     `yaml:"password_expire_warn,omitempty"`
-	PasswordLock                 bool    `yaml:"password_lock,omitempty"`
+	PasswordLock                 bool    `yaml:"password_lock"`
 	SeUser                       string  `yaml:"seuser,omitempty"`
 	Shell                        string  `yaml:"shell,omitempty"`
 	Skeleton                     string  `yaml:"skeleton,omitempty"`
