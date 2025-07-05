@@ -80,3 +80,13 @@ type AnsibleBuiltinRemoveUserParameters struct {
 	Force bool   `yaml:"force,omitempty"`
 	State string `yaml:"state,omitempty"`
 }
+
+type AnsibleBuiltinShell struct {
+	TaskName string                  `yaml:"name"`
+	Shell    string                  `yaml:"ansible.builtin.shell"`
+	Args     AnsibleBuiltinShellArgs `yaml:"args,omitempty"`
+}
+
+type AnsibleBuiltinShellArgs struct {
+	Executable string `yaml:"executable,omitempty"`
+}
