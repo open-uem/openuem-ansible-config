@@ -121,3 +121,24 @@ func AddLinuxLocalUser(taskName string,
 
 	return &user, nil
 }
+
+func RemoveLinuxLocalUser(taskName string, force bool, name string) (*AnsibleBuiltinUser, error) {
+
+	user := AnsibleBuiltinUser{}
+	if taskName == "" {
+		return nil, errors.New("task name cannot be empty")
+	}
+	user.TaskName = taskName
+
+	if name == "" {
+		return nil, errors.New("username cannot be empty")
+	}
+
+	user.Parameters = AnsibleBuiltinUserParameters{
+		Name:  name,
+		Force: force,
+		State: "absent",
+	}
+
+	return &user, nil
+}
