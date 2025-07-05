@@ -89,4 +89,5 @@ type AnsibleBuiltinShell struct {
 
 type AnsibleBuiltinShellArgs struct {
 	Executable string `yaml:"executable,omitempty"`
+	Creates    string `yaml:"creates,omitempty"`
 }
