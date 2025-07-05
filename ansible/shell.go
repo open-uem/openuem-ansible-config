@@ -2,10 +2,9 @@ package ansible
 
 import (
 	"errors"
-	"path/filepath"
 )
 
-func ExecuteScript(taskName string, shell string, executable string, run string, agent string) (*AnsibleBuiltinShell, error) {
+func ExecuteScript(taskName string, shell string, executable string, run string, creates string, agent string) (*AnsibleBuiltinShell, error) {
 	builtinShell := AnsibleBuiltinShell{}
 	if taskName == "" {
 		return nil, errors.New("task name cannot be empty")
@@ -16,11 +15,7 @@ func ExecuteScript(taskName string, shell string, executable string, run string,
 		return nil, errors.New("wrong run option")
 	}
 
-	if run == "once" {
-		if agent == "linux" {
-			builtinShell.Args.Creates = filepath.Join("/opt/openuem-agent/bin/ansible", taskName+".txt")
-		}
-	}
+	builtinShell.Args.Creates = creates
 
 	if shell == "" {
 		return nil, errors.New("shell script cannot be empty")
