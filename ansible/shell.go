@@ -18,7 +18,7 @@ func ExecuteScript(taskName string, shell string, executable string, run string,
 
 	if run == "once" {
 		if agent == "linux" {
-			builtinShell.Args.Creates = filepath.Join("/opt/openuem-agent/bin/ansible", taskName, ".txt")
+			builtinShell.Args.Creates = filepath.Join("/opt/openuem-agent/bin/ansible", taskName+".txt")
 		}
 	}
 
