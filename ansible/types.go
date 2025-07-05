@@ -29,12 +29,12 @@ type AnsibleBuiltinGroupParameters struct {
 	State  string `yaml:"state,omitempty"`
 }
 
-type AnsibleBuiltinUser struct {
-	TaskName   string                       `yaml:"name"`
-	Parameters AnsibleBuiltinUserParameters `yaml:"ansible.builtin.user"`
+type AnsibleBuiltinAddUser struct {
+	TaskName   string                          `yaml:"name"`
+	Parameters AnsibleBuiltinAddUserParameters `yaml:"ansible.builtin.user"`
 }
 
-type AnsibleBuiltinUserParameters struct {
+type AnsibleBuiltinAddUserParameters struct {
 	Name                         string  `yaml:"name"`
 	Append                       bool    `yaml:"append,omitempty"`
 	Comment                      string  `yaml:"comment,omitempty"`
@@ -68,4 +68,15 @@ type AnsibleBuiltinUserParameters struct {
 	UIDMin                       int     `yaml:"uid_min,omitempty"`
 	Umask                        string  `yaml:"umask,omitempty"`
 	UpdatePassword               string  `yaml:"update_password,omitempty"`
+}
+
+type AnsibleBuiltinRemoveUser struct {
+	TaskName   string                             `yaml:"name"`
+	Parameters AnsibleBuiltinRemoveUserParameters `yaml:"ansible.builtin.user"`
+}
+
+type AnsibleBuiltinRemoveUserParameters struct {
+	Name  string `yaml:"name"`
+	Force bool   `yaml:"force,omitempty"`
+	State string `yaml:"state,omitempty"`
 }

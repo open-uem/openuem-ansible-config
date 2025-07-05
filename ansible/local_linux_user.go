@@ -13,9 +13,9 @@ func AddLinuxLocalUser(taskName string,
 	password_lock bool, shell string, skeleton string, ssh_key_bits int,
 	ssh_key_comment string, ssh_key_file string, ssh_key_passphrase string,
 	ssh_key_type string, system bool, umask string,
-	uid int, uid_max int, uid_min int) (*AnsibleBuiltinUser, error) {
+	uid int, uid_max int, uid_min int) (*AnsibleBuiltinAddUser, error) {
 
-	user := AnsibleBuiltinUser{}
+	user := AnsibleBuiltinAddUser{}
 	if taskName == "" {
 		return nil, errors.New("task name cannot be empty")
 	}
@@ -25,7 +25,7 @@ func AddLinuxLocalUser(taskName string,
 		return nil, errors.New("username cannot be empty")
 	}
 
-	user.Parameters = AnsibleBuiltinUserParameters{
+	user.Parameters = AnsibleBuiltinAddUserParameters{
 		Name:           name,
 		Comment:        comment,
 		CreateHome:     create_home,
@@ -122,9 +122,9 @@ func AddLinuxLocalUser(taskName string,
 	return &user, nil
 }
 
-func RemoveLinuxLocalUser(taskName string, force bool, name string) (*AnsibleBuiltinUser, error) {
+func RemoveLinuxLocalUser(taskName string, force bool, name string) (*AnsibleBuiltinRemoveUser, error) {
 
-	user := AnsibleBuiltinUser{}
+	user := AnsibleBuiltinRemoveUser{}
 	if taskName == "" {
 		return nil, errors.New("task name cannot be empty")
 	}
@@ -134,7 +134,7 @@ func RemoveLinuxLocalUser(taskName string, force bool, name string) (*AnsibleBui
 		return nil, errors.New("username cannot be empty")
 	}
 
-	user.Parameters = AnsibleBuiltinUserParameters{
+	user.Parameters = AnsibleBuiltinRemoveUserParameters{
 		Name:  name,
 		Force: force,
 		State: "absent",
