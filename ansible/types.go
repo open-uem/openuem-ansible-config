@@ -91,3 +91,17 @@ type AnsibleBuiltinShellArgs struct {
 	Executable string `yaml:"executable,omitempty"`
 	Creates    string `yaml:"creates,omitempty"`
 }
+
+type CommunityGeneralFlatpak struct {
+	TaskName   string                            `yaml:"name"`
+	Parameters CommunityGeneralFlatpakParameters `yaml:"community.general.flatpak"`
+}
+
+type CommunityGeneralFlatpakParameters struct {
+	Executable     string `yaml:"executable,omitempty"`
+	Method         string `yaml:"method,omitempty"`
+	Name           string `yaml:"name,omitempty"`
+	NoDependencies bool   `yaml:"no_dependencies,omitempty"`
+	Remote         string `yaml:"remote,omitempty"`
+	State          string `yaml:"state,omitempty"`
+}
