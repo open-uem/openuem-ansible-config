@@ -105,3 +105,36 @@ type CommunityGeneralFlatpakParameters struct {
 	Remote         string `yaml:"remote,omitempty"`
 	State          string `yaml:"state,omitempty"`
 }
+
+type CommunityGeneralHomeBrew struct {
+	TaskName   string                             `yaml:"name"`
+	Parameters CommunityGeneralHomeBrewParameters `yaml:"community.general.homebrew"`
+}
+
+type CommunityGeneralHomeBrewParameters struct {
+	ForceFormula   bool   `yaml:"force_formula,omitempty"`
+	InstallOptions string `yaml:"install_options,omitempty"`
+	Name           string `yaml:"name,omitempty"`
+	Path           string `yaml:"path,omitempty"`
+	State          string `yaml:"state,omitempty"`
+	UpdateHomeBrew bool   `yaml:"update_homebrew,omitempty"`
+	UpgradeAll     bool   `yaml:"upgrade_all,omitempty"`
+	UpgradeOptions string `yaml:"upgrade_options,omitempty"`
+}
+
+type CommunityGeneralHomeBrewCask struct {
+	TaskName   string                                 `yaml:"name"`
+	Parameters CommunityGeneralHomeBrewCaskParameters `yaml:"community.general.homebrew_cask"`
+}
+
+type CommunityGeneralHomeBrewCaskParameters struct {
+	AccepExternalApps bool   `yaml:"accept_external_apps,omitempty"`
+	Greedy            bool   `yaml:"greedy,omitempty"`
+	InstallOptions    string `yaml:"install_options,omitempty"`
+	Name              string `yaml:"name,omitempty"`
+	Path              string `yaml:"path,omitempty"`
+	State             string `yaml:"state,omitempty"`
+	SudoPassword      string `yaml:"sudo_password,omitempty"`
+	UpdateHomeBrew    bool   `yaml:"update_homebrew,omitempty"`
+	UpgradeAll        bool   `yaml:"upgrade_all,omitempty"`
+}
