@@ -10,6 +10,8 @@ func InstallHomeBrewFormula(taskName string, name string, installOptions string,
 		return nil, errors.New("task name cannot be empty")
 	}
 	f.TaskName = taskName
+	f.Become = "yes"
+	f.BecomeUser = "some_user"
 
 	f.Parameters = CommunityGeneralHomeBrewParameters{}
 	if name == "" {
@@ -35,6 +37,8 @@ func UpgradeHomeBrewFormula(taskName string, name string, updateHomeBrew bool, u
 		return nil, errors.New("task name cannot be empty")
 	}
 	f.TaskName = taskName
+	f.Become = "yes"
+	f.BecomeUser = "some_user"
 
 	f.Parameters = CommunityGeneralHomeBrewParameters{}
 	if name == "" {
@@ -63,6 +67,8 @@ func UninstallHomeBrewFormula(taskName string, name string) (*CommunityGeneralHo
 		return nil, errors.New("task name cannot be empty")
 	}
 	f.TaskName = taskName
+	f.Become = "yes"
+	f.BecomeUser = "some_user"
 
 	f.Parameters = CommunityGeneralHomeBrewParameters{}
 	if name == "" {
@@ -80,6 +86,8 @@ func InstallHomeBrewCask(taskName string, name string, installOptions string, up
 		return nil, errors.New("task name cannot be empty")
 	}
 	f.TaskName = taskName
+	f.Become = "yes"
+	f.BecomeUser = "some_user"
 
 	f.Parameters = CommunityGeneralHomeBrewCaskParameters{}
 	if name == "" {
@@ -104,6 +112,8 @@ func UpgradeHomeBrewCask(taskName string, name string, greedy bool, updateHomeBr
 		return nil, errors.New("task name cannot be empty")
 	}
 	f.TaskName = taskName
+	f.Become = "yes"
+	f.BecomeUser = "some_user"
 
 	f.Parameters = CommunityGeneralHomeBrewCaskParameters{}
 	if name == "" {
@@ -129,6 +139,8 @@ func UninstallHomeBrewCask(taskName string, name string) (*CommunityGeneralHomeB
 		return nil, errors.New("task name cannot be empty")
 	}
 	f.TaskName = taskName
+	f.Become = "yes"
+	f.BecomeUser = "some_user"
 
 	f.Parameters = CommunityGeneralHomeBrewCaskParameters{}
 	if name == "" {

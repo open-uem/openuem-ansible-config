@@ -108,6 +108,8 @@ type CommunityGeneralFlatpakParameters struct {
 
 type CommunityGeneralHomeBrew struct {
 	TaskName   string                             `yaml:"name"`
+	Become     string                             `yaml:"become,omitempty"`
+	BecomeUser string                             `yaml:"become_user,omitempty"`
 	Parameters CommunityGeneralHomeBrewParameters `yaml:"community.general.homebrew"`
 }
 
@@ -124,6 +126,8 @@ type CommunityGeneralHomeBrewParameters struct {
 
 type CommunityGeneralHomeBrewCask struct {
 	TaskName   string                                 `yaml:"name"`
+	Become     string                                 `yaml:"become,omitempty"`
+	BecomeUser string                                 `yaml:"become_user,omitempty"`
 	Parameters CommunityGeneralHomeBrewCaskParameters `yaml:"community.general.homebrew_cask"`
 }
 
