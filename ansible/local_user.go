@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func AddLinuxLocalUser(taskName string,
+func AddLocalUser(taskName string,
 	append bool, comment string, create_home bool, expires float64, force bool,
 	generate_ssh_key bool, group string, groups string, home string, name string,
 	non_unique bool, password string, password_expire_account_disable int,
@@ -13,7 +13,7 @@ func AddLinuxLocalUser(taskName string,
 	password_lock bool, shell string, skeleton string, ssh_key_bits int,
 	ssh_key_comment string, ssh_key_file string, ssh_key_passphrase string,
 	ssh_key_type string, system bool, umask string,
-	uid int, uid_max int, uid_min int) (*AnsibleBuiltinAddUser, error) {
+	uid int, uid_max int, uid_min int, agentType string) (*AnsibleBuiltinAddUser, error) {
 
 	user := AnsibleBuiltinAddUser{}
 	if taskName == "" {
@@ -53,7 +53,12 @@ func AddLinuxLocalUser(taskName string,
 	}
 
 	if password != "" {
-		user.Parameters.Password = fmt.Sprintf(`{{ '%s' | password_hash("sha512") }}`, password)
+		if agentType == "linux" {
+			user.Parameters.Password = fmt.Sprintf(`{{ '%s' | password_hash("sha512") }}`, password)
+		}
+		if agentType == "macos" {
+			user.Parameters.Password = password
+		}
 	}
 
 	if password_expire_account_disable >= 0 {
@@ -122,7 +127,7 @@ func AddLinuxLocalUser(taskName string,
 	return &user, nil
 }
 
-func RemoveLinuxLocalUser(taskName string, force bool, name string) (*AnsibleBuiltinRemoveUser, error) {
+func RemoveLocalUser(taskName string, force bool, name string) (*AnsibleBuiltinRemoveUser, error) {
 
 	user := AnsibleBuiltinRemoveUser{}
 	if taskName == "" {
