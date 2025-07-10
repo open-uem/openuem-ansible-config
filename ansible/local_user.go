@@ -57,7 +57,7 @@ func AddLocalUser(taskName string,
 			user.Parameters.Password = fmt.Sprintf(`{{ '%s' | password_hash("sha512") }}`, password)
 		}
 		if agentType == "macos" {
-			user.Parameters.Password = password
+			user.Parameters.Password = fmt.Sprintf(`"%s"`, password)
 		}
 	}
 
