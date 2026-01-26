@@ -13,7 +13,7 @@ func AddLocalUser(taskName string,
 	password_lock bool, shell string, skeleton string, ssh_key_bits int,
 	ssh_key_comment string, ssh_key_file string, ssh_key_passphrase string,
 	ssh_key_type string, system bool, umask string,
-	uid int, uid_max int, uid_min int, agentType string) (*AnsibleBuiltinAddUser, error) {
+	uid int, uid_max int, uid_min int, agentType string, ignore_errors bool) (*AnsibleBuiltinAddUser, error) {
 
 	user := AnsibleBuiltinAddUser{}
 	if taskName == "" {
@@ -124,10 +124,12 @@ func AddLocalUser(taskName string,
 		user.Parameters.UIDMin = uid_min
 	}
 
+	user.IgnoreErrors = ignore_errors
+
 	return &user, nil
 }
 
-func RemoveLocalUser(taskName string, force bool, name string) (*AnsibleBuiltinRemoveUser, error) {
+func RemoveLocalUser(taskName string, force bool, name string, ignore_errors bool) (*AnsibleBuiltinRemoveUser, error) {
 
 	user := AnsibleBuiltinRemoveUser{}
 	if taskName == "" {
@@ -144,6 +146,8 @@ func RemoveLocalUser(taskName string, force bool, name string) (*AnsibleBuiltinR
 		Force: force,
 		State: "absent",
 	}
+
+	user.IgnoreErrors = ignore_errors
 
 	return &user, nil
 }

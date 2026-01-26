@@ -4,7 +4,7 @@ import (
 	"errors"
 )
 
-func ExecuteScript(taskName string, shell string, executable string, creates string, agent string) (*AnsibleBuiltinShell, error) {
+func ExecuteScript(taskName string, shell string, executable string, creates string, agent string, ignore_errors bool) (*AnsibleBuiltinShell, error) {
 	builtinShell := AnsibleBuiltinShell{}
 	if taskName == "" {
 		return nil, errors.New("task name cannot be empty")
@@ -22,6 +22,8 @@ func ExecuteScript(taskName string, shell string, executable string, creates str
 			Executable: executable,
 		}
 	}
+
+	builtinShell.IgnoreErrors = ignore_errors
 
 	return &builtinShell, nil
 }

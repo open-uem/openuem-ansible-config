@@ -4,7 +4,7 @@ import (
 	"errors"
 )
 
-func InstallHomeBrewFormula(taskName string, name string, installOptions string, updateHomeBrew bool) (*CommunityGeneralHomeBrew, error) {
+func InstallHomeBrewFormula(taskName string, name string, installOptions string, updateHomeBrew bool, ignore_errors bool) (*CommunityGeneralHomeBrew, error) {
 	f := CommunityGeneralHomeBrew{}
 	if taskName == "" {
 		return nil, errors.New("task name cannot be empty")
@@ -28,10 +28,12 @@ func InstallHomeBrewFormula(taskName string, name string, installOptions string,
 	f.Parameters.UpdateHomeBrew = updateHomeBrew
 	f.Parameters.State = "present"
 
+	f.IgnoreErrors = ignore_errors
+
 	return &f, nil
 }
 
-func UpgradeHomeBrewFormula(taskName string, name string, updateHomeBrew bool, upgradeAll bool, upgradeOptions string) (*CommunityGeneralHomeBrew, error) {
+func UpgradeHomeBrewFormula(taskName string, name string, updateHomeBrew bool, upgradeAll bool, upgradeOptions string, ignore_errors bool) (*CommunityGeneralHomeBrew, error) {
 	f := CommunityGeneralHomeBrew{}
 	if taskName == "" {
 		return nil, errors.New("task name cannot be empty")
@@ -58,10 +60,12 @@ func UpgradeHomeBrewFormula(taskName string, name string, updateHomeBrew bool, u
 
 	f.Parameters.State = "upgraded"
 
+	f.IgnoreErrors = ignore_errors
+
 	return &f, nil
 }
 
-func UninstallHomeBrewFormula(taskName string, name string) (*CommunityGeneralHomeBrew, error) {
+func UninstallHomeBrewFormula(taskName string, name string, ignore_errors bool) (*CommunityGeneralHomeBrew, error) {
 	f := CommunityGeneralHomeBrew{}
 	if taskName == "" {
 		return nil, errors.New("task name cannot be empty")
@@ -77,10 +81,12 @@ func UninstallHomeBrewFormula(taskName string, name string) (*CommunityGeneralHo
 	f.Parameters.Name = name
 	f.Parameters.State = "absent"
 
+	f.IgnoreErrors = ignore_errors
+
 	return &f, nil
 }
 
-func InstallHomeBrewCask(taskName string, name string, installOptions string, updateHomeBrew bool) (*CommunityGeneralHomeBrewCask, error) {
+func InstallHomeBrewCask(taskName string, name string, installOptions string, updateHomeBrew bool, ignore_errors bool) (*CommunityGeneralHomeBrewCask, error) {
 	f := CommunityGeneralHomeBrewCask{}
 	if taskName == "" {
 		return nil, errors.New("task name cannot be empty")
@@ -103,10 +109,12 @@ func InstallHomeBrewCask(taskName string, name string, installOptions string, up
 	f.Parameters.UpdateHomeBrew = updateHomeBrew
 	f.Parameters.State = "present"
 
+	f.IgnoreErrors = ignore_errors
+
 	return &f, nil
 }
 
-func UpgradeHomeBrewCask(taskName string, name string, greedy bool, updateHomeBrew bool, upgradeAll bool) (*CommunityGeneralHomeBrewCask, error) {
+func UpgradeHomeBrewCask(taskName string, name string, greedy bool, updateHomeBrew bool, upgradeAll bool, ignore_errors bool) (*CommunityGeneralHomeBrewCask, error) {
 	f := CommunityGeneralHomeBrewCask{}
 	if taskName == "" {
 		return nil, errors.New("task name cannot be empty")
@@ -130,10 +138,12 @@ func UpgradeHomeBrewCask(taskName string, name string, greedy bool, updateHomeBr
 
 	f.Parameters.State = "upgraded"
 
+	f.IgnoreErrors = ignore_errors
+
 	return &f, nil
 }
 
-func UninstallHomeBrewCask(taskName string, name string) (*CommunityGeneralHomeBrewCask, error) {
+func UninstallHomeBrewCask(taskName string, name string, ignore_errors bool) (*CommunityGeneralHomeBrewCask, error) {
 	f := CommunityGeneralHomeBrewCask{}
 	if taskName == "" {
 		return nil, errors.New("task name cannot be empty")
@@ -148,6 +158,8 @@ func UninstallHomeBrewCask(taskName string, name string) (*CommunityGeneralHomeB
 	}
 	f.Parameters.Name = name
 	f.Parameters.State = "absent"
+
+	f.IgnoreErrors = ignore_errors
 
 	return &f, nil
 }

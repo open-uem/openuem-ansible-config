@@ -2,7 +2,7 @@ package ansible
 
 import "errors"
 
-func AddLocalGroup(taskName string, name string, gid int, system bool) (*AnsibleBuiltinGroup, error) {
+func AddLocalGroup(taskName string, name string, gid int, system bool, ignore_errors bool) (*AnsibleBuiltinGroup, error) {
 	group := AnsibleBuiltinGroup{}
 	if taskName == "" {
 		return nil, errors.New("task name cannot be empty")
@@ -23,10 +23,12 @@ func AddLocalGroup(taskName string, name string, gid int, system bool) (*Ansible
 	group.Parameters.System = system
 	group.Parameters.State = Present
 
+	group.IgnoreErrors = ignore_errors
+
 	return &group, nil
 }
 
-func RemoveLocalGroup(taskName string, name string, force bool) (*AnsibleBuiltinGroup, error) {
+func RemoveLocalGroup(taskName string, name string, force bool, ignore_errors bool) (*AnsibleBuiltinGroup, error) {
 	group := AnsibleBuiltinGroup{}
 	if taskName == "" {
 		return nil, errors.New("task name cannot be empty")
@@ -43,6 +45,8 @@ func RemoveLocalGroup(taskName string, name string, force bool) (*AnsibleBuiltin
 
 	group.Parameters.Force = force
 	group.Parameters.State = Absent
+
+	group.IgnoreErrors = ignore_errors
 
 	return &group, nil
 }
