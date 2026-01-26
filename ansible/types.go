@@ -17,8 +17,9 @@ type AnsiblePlaybook struct {
 }
 
 type AnsibleBuiltinGroup struct {
-	TaskName   string                        `yaml:"name"`
-	Parameters AnsibleBuiltinGroupParameters `yaml:"ansible.builtin.group"`
+	TaskName     string                        `yaml:"name"`
+	Parameters   AnsibleBuiltinGroupParameters `yaml:"ansible.builtin.group"`
+	IgnoreErrors bool                          `yaml:"ignore_errors"`
 }
 
 type AnsibleBuiltinGroupParameters struct {
@@ -30,8 +31,9 @@ type AnsibleBuiltinGroupParameters struct {
 }
 
 type AnsibleBuiltinAddUser struct {
-	TaskName   string                          `yaml:"name"`
-	Parameters AnsibleBuiltinAddUserParameters `yaml:"ansible.builtin.user"`
+	TaskName     string                          `yaml:"name"`
+	Parameters   AnsibleBuiltinAddUserParameters `yaml:"ansible.builtin.user"`
+	IgnoreErrors bool                            `yaml:"ignore_errors"`
 }
 
 type AnsibleBuiltinAddUserParameters struct {
@@ -71,8 +73,9 @@ type AnsibleBuiltinAddUserParameters struct {
 }
 
 type AnsibleBuiltinRemoveUser struct {
-	TaskName   string                             `yaml:"name"`
-	Parameters AnsibleBuiltinRemoveUserParameters `yaml:"ansible.builtin.user"`
+	TaskName     string                             `yaml:"name"`
+	Parameters   AnsibleBuiltinRemoveUserParameters `yaml:"ansible.builtin.user"`
+	IgnoreErrors bool                               `yaml:"ignore_errors"`
 }
 
 type AnsibleBuiltinRemoveUserParameters struct {
@@ -82,9 +85,10 @@ type AnsibleBuiltinRemoveUserParameters struct {
 }
 
 type AnsibleBuiltinShell struct {
-	TaskName string                  `yaml:"name"`
-	Shell    string                  `yaml:"ansible.builtin.shell"`
-	Args     AnsibleBuiltinShellArgs `yaml:"args,omitempty"`
+	TaskName     string                  `yaml:"name"`
+	Shell        string                  `yaml:"ansible.builtin.shell"`
+	Args         AnsibleBuiltinShellArgs `yaml:"args,omitempty"`
+	IgnoreErrors bool                    `yaml:"ignore_errors"`
 }
 
 type AnsibleBuiltinShellArgs struct {
@@ -93,8 +97,9 @@ type AnsibleBuiltinShellArgs struct {
 }
 
 type CommunityGeneralFlatpak struct {
-	TaskName   string                            `yaml:"name"`
-	Parameters CommunityGeneralFlatpakParameters `yaml:"community.general.flatpak"`
+	TaskName     string                            `yaml:"name"`
+	Parameters   CommunityGeneralFlatpakParameters `yaml:"community.general.flatpak"`
+	IgnoreErrors bool                              `yaml:"ignore_errors"`
 }
 
 type CommunityGeneralFlatpakParameters struct {
@@ -107,10 +112,11 @@ type CommunityGeneralFlatpakParameters struct {
 }
 
 type CommunityGeneralHomeBrew struct {
-	TaskName   string                             `yaml:"name"`
-	Become     string                             `yaml:"become,omitempty"`
-	BecomeUser string                             `yaml:"become_user,omitempty"`
-	Parameters CommunityGeneralHomeBrewParameters `yaml:"community.general.homebrew"`
+	TaskName     string                             `yaml:"name"`
+	Become       string                             `yaml:"become,omitempty"`
+	BecomeUser   string                             `yaml:"become_user,omitempty"`
+	Parameters   CommunityGeneralHomeBrewParameters `yaml:"community.general.homebrew"`
+	IgnoreErrors bool                               `yaml:"ignore_errors"`
 }
 
 type CommunityGeneralHomeBrewParameters struct {
@@ -125,10 +131,11 @@ type CommunityGeneralHomeBrewParameters struct {
 }
 
 type CommunityGeneralHomeBrewCask struct {
-	TaskName   string                                 `yaml:"name"`
-	Become     string                                 `yaml:"become,omitempty"`
-	BecomeUser string                                 `yaml:"become_user,omitempty"`
-	Parameters CommunityGeneralHomeBrewCaskParameters `yaml:"community.general.homebrew_cask"`
+	TaskName     string                                 `yaml:"name"`
+	Become       string                                 `yaml:"become,omitempty"`
+	BecomeUser   string                                 `yaml:"become_user,omitempty"`
+	Parameters   CommunityGeneralHomeBrewCaskParameters `yaml:"community.general.homebrew_cask"`
+	IgnoreErrors bool                                   `yaml:"ignore_errors"`
 }
 
 type CommunityGeneralHomeBrewCaskParameters struct {

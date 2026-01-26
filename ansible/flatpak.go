@@ -4,7 +4,7 @@ import (
 	"errors"
 )
 
-func InstallFlatpakPackage(taskName string, name string, latest bool) (*CommunityGeneralFlatpak, error) {
+func InstallFlatpakPackage(taskName string, name string, latest bool, ignore_errors bool) (*CommunityGeneralFlatpak, error) {
 	f := CommunityGeneralFlatpak{}
 	if taskName == "" {
 		return nil, errors.New("task name cannot be empty")
@@ -22,10 +22,12 @@ func InstallFlatpakPackage(taskName string, name string, latest bool) (*Communit
 		f.Parameters.State = "latest"
 	}
 
+	f.IgnoreErrors = ignore_errors
+
 	return &f, nil
 }
 
-func UninstallFlatpakPackage(taskName string, name string) (*CommunityGeneralFlatpak, error) {
+func UninstallFlatpakPackage(taskName string, name string, ignore_errors bool) (*CommunityGeneralFlatpak, error) {
 	f := CommunityGeneralFlatpak{}
 	if taskName == "" {
 		return nil, errors.New("task name cannot be empty")
@@ -39,6 +41,8 @@ func UninstallFlatpakPackage(taskName string, name string) (*CommunityGeneralFla
 
 	f.Parameters.Name = name
 	f.Parameters.State = "absent"
+
+	f.IgnoreErrors = ignore_errors
 
 	return &f, nil
 }
