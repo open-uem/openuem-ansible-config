@@ -10,10 +10,11 @@ type AnsiblePlaybooks struct {
 }
 
 type AnsiblePlaybook struct {
-	Name       string `yaml:"name"`
-	Hosts      string `yaml:"hosts"`
-	Connection string `yaml:"connection"`
-	Tasks      []any  `yaml:"tasks"`
+	Name        string `yaml:"name"`
+	Hosts       string `yaml:"hosts"`
+	Connection  string `yaml:"connection"`
+	GatherFacts bool   `yaml:"gather_facts"`
+	Tasks       []any  `yaml:"tasks"`
 }
 
 type AnsibleBuiltinGroup struct {
