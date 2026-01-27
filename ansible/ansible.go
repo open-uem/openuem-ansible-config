@@ -4,7 +4,7 @@ func NewAnsiblePlaybook() *AnsiblePlaybook {
 	pb := AnsiblePlaybook{}
 	pb.Hosts = "localhost"
 	pb.Connection = "local"
-	pb.GatherFacts = "no"
+	pb.GatherFacts = false
 	return &pb
 }
 

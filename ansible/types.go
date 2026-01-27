@@ -13,7 +13,7 @@ type AnsiblePlaybook struct {
 	Name        string `yaml:"name"`
 	Hosts       string `yaml:"hosts"`
 	Connection  string `yaml:"connection"`
-	GatherFacts string `yaml:"gather_facts"`
+	GatherFacts bool   `yaml:"gather_facts"`
 	Tasks       []any  `yaml:"tasks"`
 }
 
