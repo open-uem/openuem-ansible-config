@@ -18,7 +18,7 @@ func InstallFlatpakPackage(taskName string, name string, branch string, latest b
 	}
 
 	packageName := name
-	if ref != "" {
+	if branch != "" {
 		packageName = fmt.Sprintf("%s//%s", name, branch)
 	}
 
