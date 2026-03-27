@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func InstallFlatpakPackage(taskName string, name string, ref string, latest bool, ignore_errors bool) (*CommunityGeneralFlatpak, error) {
+func InstallFlatpakPackage(taskName string, name string, branch string, latest bool, ignore_errors bool) (*CommunityGeneralFlatpak, error) {
 	f := CommunityGeneralFlatpak{}
 	if taskName == "" {
 		return nil, errors.New("task name cannot be empty")
@@ -19,7 +19,7 @@ func InstallFlatpakPackage(taskName string, name string, ref string, latest bool
 
 	packageName := name
 	if ref != "" {
-		packageName = fmt.Sprintf("%s//%s", name, ref)
+		packageName = fmt.Sprintf("%s//%s", name, branch)
 	}
 
 	f.Parameters.Name = packageName
