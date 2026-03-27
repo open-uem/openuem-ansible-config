@@ -2,9 +2,10 @@ package ansible
 
 import (
 	"errors"
+	"fmt"
 )
 
-func InstallFlatpakPackage(taskName string, name string, latest bool, ignore_errors bool) (*CommunityGeneralFlatpak, error) {
+func InstallFlatpakPackage(taskName string, name string, ref string, latest bool, ignore_errors bool) (*CommunityGeneralFlatpak, error) {
 	f := CommunityGeneralFlatpak{}
 	if taskName == "" {
 		return nil, errors.New("task name cannot be empty")
@@ -16,7 +17,12 @@ func InstallFlatpakPackage(taskName string, name string, latest bool, ignore_err
 		return nil, errors.New("package name cannot be empty")
 	}
 
-	f.Parameters.Name = name
+	packageName := name
+	if ref != "" {
+		packageName = fmt.Sprintf("%s//%s", name, ref)
+	}
+
+	f.Parameters.Name = packageName
 	f.Parameters.State = "present"
 	if latest {
 		f.Parameters.State = "latest"
