@@ -33,7 +33,7 @@ func InstallFlatpakPackage(taskName string, name string, branch string, latest b
 	return &f, nil
 }
 
-func UninstallFlatpakPackage(taskName string, name string, ignore_errors bool) (*CommunityGeneralFlatpak, error) {
+func UninstallFlatpakPackage(taskName string, name string, branch string, ignore_errors bool) (*CommunityGeneralFlatpak, error) {
 	f := CommunityGeneralFlatpak{}
 	if taskName == "" {
 		return nil, errors.New("task name cannot be empty")
@@ -45,7 +45,12 @@ func UninstallFlatpakPackage(taskName string, name string, ignore_errors bool) (
 		return nil, errors.New("package name cannot be empty")
 	}
 
-	f.Parameters.Name = name
+	packageName := name
+	if branch != "" {
+		packageName = fmt.Sprintf("%s//%s", name, branch)
+	}
+
+	f.Parameters.Name = packageName
 	f.Parameters.State = "absent"
 
 	f.IgnoreErrors = ignore_errors
